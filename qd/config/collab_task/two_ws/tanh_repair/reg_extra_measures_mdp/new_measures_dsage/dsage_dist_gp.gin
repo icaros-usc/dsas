@@ -1,0 +1,5 @@
+# Configuration for DSAGE with dist-gp measures.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/dsage.gin"
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/new_measures_dsage/dist_gp_base.gin"
+
+experiment.name = "DSAGE dist-gp"

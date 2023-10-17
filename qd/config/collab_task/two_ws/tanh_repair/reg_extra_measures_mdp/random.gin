@@ -1,0 +1,13 @@
+# Configuration for MAP-Elites with two workspace collab task setting.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/cma_mae.gin"
+
+experiment.name = "Random Collab"
+
+Manager.emitter_types = [(@UniformRandomEmitter, 1)]
+
+UniformRandomEmitter.solution_dim = 9
+UniformRandomEmitter.bounds = [
+    [[0, 0], [0.52, 0.68], [-0.08, 0.18], [0, 0], [0.52, 0.68], [-0.08, 0.18], [0, 0], [0.52, 0.68], [-0.08, 0.18]],
+    [[0, 0], [0.138, 0.298], [0.496, 0.756], [0, 0], [0.138, 0.298], [0.496, 0.756], [0, 0], [0.138, 0.298], [0.496, 0.756]]
+]
+UniformRandomEmitter.batch_size = 100

@@ -1,0 +1,14 @@
+<package>
+    <description brief="URDF model of ADA">
+        URDF model of ADA. ADA, the Assistive Dexterous Arm, was designed
+        and built by the Personal Robotics Laboratory at Carnegie Mellon
+        University.
+    </description>
+    <depend package="or_urdf"/>
+    <depend package="xacro"/>
+    <author>Tekin Mericli</author>
+    <license>BSD</license>
+    <export>
+        <openrave data="${prefix}/ordata"/>
+    </export>
+</package>

@@ -1,0 +1,31 @@
+x_b = [0.5, 0.7]
+y_b = [-0.05, 0.2]
+num_points = 2
+start_robot_pos =  [0.409,0.338,0.795]
+start_end_effector_pos = [0.283,-0.054,0.982]
+morsel_height = 0.982
+num_waypoints = 5
+
+
+map_size_1 = 25
+map_size_2 = 100
+
+has_obstacle = 0
+
+disturbance_max = 0.05
+disturbance_step = 0.01
+
+method="blend"
+blend_level = "aggressive"
+
+[[Map.Features]]
+name="calc_distance_between_objects"
+low=0
+high=0.32
+
+[[Map.Features]]
+name="calc_variation"
+low=0.0
+high= 0.112
+
+

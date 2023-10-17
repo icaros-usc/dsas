@@ -1,0 +1,58 @@
+<launch>
+
+   <!-- the controller node itself -->
+   <node pkg="mico_hardware" 
+          name="ros_control_kinova_mico" 
+          type="mico_hardware" 
+          output="screen"
+          ns="ada" />
+
+
+   <!-- load controllers -->
+   <rosparam file="$(find ada_launch)/config/controllers.yaml" command="load" ns="ada" />
+   
+   <node name="controller_spawner_started" pkg="controller_manager" ns="ada" type="spawner" respawn="false"
+      output="screen"
+      args="
+         joint_state_controller
+         velocity_joint_mode_controller
+         pid_j1_controller
+         pid_j2_controller
+         pid_j3_controller
+         pid_j4_controller
+         pid_j5_controller
+         pid_j6_controller
+         pid_f1_controller
+         pid_f2_controller" />
+   <node name="controller_spawner_stopped" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen"
+      args="
+         --stopped
+         position_joint_mode_controller
+         traj_controller
+         pos_j1_controller
+         pos_j2_controller
+         pos_j3_controller
+         pos_j4_controller
+         pos_j5_controller
+         pos_j6_controller
+         pos_f1_controller
+         pos_f2_controller
+         "
+       ns="ada" />
+   
+   <!-- load a nice urdf -->
+   <param name="robot_description" command="cat $(find ada_description)/robots/mico-modified.urdf" />
+   
+   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" ns="ada" />
+
+   <node ns="ada" pkg="control_input" output="screen" type="joy3axis_node.py" name="cartesian_control_input_node" />
+   <node ns="ada" pkg="joy" output="screen" type="joy_node" name="joy_node" />
+
+   <node ns="ada" name="supervisor_node" pkg="ada_supervisor" type="supervisor_node" output="screen">
+     <rosparam>
+       sim: False
+     </rosparam>
+   </node>
+
+</launch>

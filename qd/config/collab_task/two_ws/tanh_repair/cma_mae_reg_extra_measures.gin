@@ -1,0 +1,12 @@
+# Configuration for MAP-Elites with two workspace collab task setting.
+include "config/collab_task/two_ws/tanh_repair/cma_mae_reg.gin"
+
+experiment.name = "CMA-MAE Collab (2 ws, tanh, repair, reg, extra meas)"
+
+Manager.train_archive_type = @train/GridArchive
+
+train/GridArchive.dims = [100, 100, 2, 2, 2]
+train/GridArchive.ranges = [[0, 0.3], [0, 0.2], [0, 1], [0, 1], [0, 1]]
+
+downsample/GridArchive.dims = [20, 20, 2, 2, 2]
+downsample/GridArchive.ranges = [[0, 0.3], [0, 0.2], [0, 1], [0, 1], [0, 1]]

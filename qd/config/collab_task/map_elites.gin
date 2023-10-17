@@ -1,0 +1,56 @@
+# Configuration for MAP-Elites with collab task setting.
+experiment.name = "MAP-Elites Collab"
+
+## Manager ##
+
+# Algorithm.
+Manager.env_manager_class = @ScenarioManager
+Manager.is_em = False
+Manager.max_evals = 10000
+Manager.initial_em_sols = 100
+Manager.inner_itrs = None
+Manager.is_dqd = False
+Manager.archive_type = @GridArchive
+Manager.sol_size = 21 # 3 points (Each with xy coordinates) + 15 disturbances.
+Manager.emitter_types = [(@GaussianEmitter, 1)]
+Manager.downsample_em = False
+Manager.downsample_archive_type = @downsample/GridArchive
+# Logging.
+Manager.archive_save_freq = -1
+Manager.reload_save_freq = 1
+Manager.plot_metrics_freq = 10
+
+## Scenario ##
+
+ScenarioConfig.measure_names = [
+  "calc_distance_between_objects",
+  "calc_variation",
+]
+ScenarioConfig.aggregation_type = "mean"
+ScenarioConfig.n_evals = 1
+# Corresponds to the collab task setting.
+ScenarioConfig.scenario_function = "collab_scenario_generate"
+
+ServerScenarioConfig.num_goals = 3
+
+## GridArchive ##
+
+GridArchive.dims = [25, 100]
+GridArchive.ranges = [[0, 0.2], [0, 0.2]]
+
+downsample/GridArchive.dims = [5, 20]
+downsample/GridArchive.ranges = [[0, 0.2], [0, 0.2]]
+
+## GaussianEmitter ##
+
+# 0.01 for the object positions, 0.005 for the disturbances of the human
+# trajectory.
+GaussianEmitter.sigma = "[0.01] * 6 + [0.005] * 15"
+# x, y bounds followed by disturbances bound
+GaussianEmitter.bounds = "[[0.52, 0.68], [-0.08, 0.18]] * 3 + [[-0.05, 0.05]] * 15"
+GaussianEmitter.batch_size = 30
+GaussianEmitter.x0 = "[0.6, 0.05] * 3 + [0] * 15" # Halfway between bounds.
+
+## EmulationModel ##
+
+# Not used here.

@@ -1,0 +1,7 @@
+# Configuration for CMA-MAE with two bottles in shared autonomy, but with
+# constraints instead of bounds.
+include "config/shared_autonomy/old/cma_mae.gin"
+
+experiment.name = "CMA-MAE Constraints Scenario"
+EvolutionStrategyEmitter.bounds = None
+EvolutionStrategyEmitter.constraint_func = "shared_autonomy_two_obj"

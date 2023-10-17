@@ -1,0 +1,58 @@
+# Configuration for MAP-Elites with two bottles in shared autonomy.
+experiment.name = "MAP-Elites SA"
+
+## Manager ##
+
+# Algorithm.
+Manager.env_manager_class = @ScenarioManager
+Manager.is_em = False
+Manager.max_evals = 10000
+Manager.initial_em_sols = 100
+Manager.inner_itrs = None
+Manager.is_dqd = False
+Manager.archive_type = @GridArchive
+Manager.train_archive_type = @train/GridArchive
+Manager.sol_size = 9 # Two points (Each with xy coordinates) + 5 disturbances.
+Manager.emitter_types = [(@GaussianEmitter, 1)]
+Manager.downsample_em = False
+Manager.downsample_archive_type = @downsample/GridArchive
+# Logging.
+Manager.archive_save_freq = -1
+Manager.reload_save_freq = 1
+Manager.plot_metrics_freq = 10
+
+## Scenario ##
+
+ScenarioConfig.measure_names = [
+  "calc_distance_between_objects",
+  "calc_variation",
+]
+ScenarioConfig.aggregation_type = "mean"
+ScenarioConfig.n_evals = 1
+# Corresponds to the two-object scenario.
+ScenarioConfig.scenario_function = "scenario_generate"
+ScenarioConfig.sol_postprocessing_func = "clip_one_ws"
+ScenarioConfig.reg_obj_coeff = 1.0
+
+ServerScenarioConfig.num_goals = 2
+ServerScenarioConfig.human_mode = "waypoints"
+
+## GridArchive ##
+
+GridArchive.dims = [25, 100]
+GridArchive.ranges = [[0, 0.32], [0, 0.112]]
+
+train/GridArchive.dims = [25, 100]
+train/GridArchive.ranges = [[0, 0.32], [0, 0.112]]
+train/GridArchive.learning_rate = 0.1
+train/GridArchive.threshold_min = 0
+
+downsample/GridArchive.dims = [5, 20]
+downsample/GridArchive.ranges = [[0, 0.32], [0, 0.112]]
+
+## GaussianEmitter ##
+
+GaussianEmitter.x0 = [0.6, 0.05, 0.6, 0.05, 0, 0, 0, 0, 0] # Halfway between bounds.
+GaussianEmitter.sigma = [0.01, 0.01, 0.01, 0.01, 0.005, 0.005, 0.005, 0.005, 0.005]
+GaussianEmitter.bounds = None
+GaussianEmitter.batch_size = 20

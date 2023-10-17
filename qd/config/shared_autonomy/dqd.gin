@@ -1,0 +1,15 @@
+# Configuration for DQD-DSAGE with two bottles in shared autonomy.
+include "config/shared_autonomy/dsage.gin"
+
+experiment.name = "DQD-DSAGE SA"
+
+Manager.is_dqd = True
+Manager.emitter_types = [(@GradientArborescenceEmitter, 8)]
+
+GradientArborescenceEmitter.x0 = [0.6, 0.05, 0.6, 0.05, 0, 0, 0, 0, 0] # Halfway between bounds.
+GradientArborescenceEmitter.sigma0 = 0.01
+GradientArborescenceEmitter.lr = 1.0
+GradientArborescenceEmitter.ranker = "imp"
+GradientArborescenceEmitter.grad_opt = "gradient_ascent"
+GradientArborescenceEmitter.restart_rule = "basic"
+GradientArborescenceEmitter.batch_size = 37

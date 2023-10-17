@@ -1,0 +1,9 @@
+# Configuration for DSAGE with two bottles in shared autonomy.
+sol_size = 9
+include "config/shared_autonomy/cma_mae.gin"
+include "config/shared_autonomy/surr_base.gin"
+
+experiment.name = "DSAGE SA"
+
+ScenarioManager.raw_em_input = True
+ScenarioManager.initial_sol_sigma = 0.5

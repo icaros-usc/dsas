@@ -1,0 +1,5 @@
+{
+    "save_depth_images": true,
+    "depth_image_path": "depth_images/",
+    "depth_image_format": "npy"
+}

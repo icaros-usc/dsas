@@ -1,0 +1,5 @@
+# Configuration for Random with dist-gp measures and human search.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/new_measures_dsage/random_dist_gp.gin"
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/human_search/human_search_base.gin"
+
+experiment.name = "Random dist-gp (human)"

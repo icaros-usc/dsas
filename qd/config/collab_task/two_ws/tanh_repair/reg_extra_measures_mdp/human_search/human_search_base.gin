@@ -1,0 +1,16 @@
+# All config changes for searching over human models.
+
+ServerScenarioConfig.human_mode = "stochastic"
+ScenarioConfig.sol_postprocessing_func = "noisy_human_repair"
+Manager.sol_size = 11
+OccupancyNet.num_inputs = 11
+PredictNet.num_inputs = 11
+UniformRandomEmitter.solution_dim = 11
+
+EvolutionStrategyEmitter.x0 = "[0] * 9 + [3, 1]"
+GradientArborescenceEmitter.x0 = "[0] * 9 + [3, 1]"
+GaussianEmitter.x0 = "[0, 0.6, 0.05] * 3 + [3, 1]"
+UniformRandomEmitter.bounds = [
+    [[0, 0], [0.52, 0.68], [-0.08, 0.18], [0, 0], [0.52, 0.68], [-0.08, 0.18], [0, 0], [0.52, 0.68], [-0.08, 0.18], [2.5, 3.5], [0.5, 2]],
+    [[0, 0], [0.138, 0.298], [0.496, 0.756], [0, 0], [0.138, 0.298], [0.496, 0.756], [0, 0], [0.138, 0.298], [0.496, 0.756], [2.5, 3.5], [0.5, 2]]
+]

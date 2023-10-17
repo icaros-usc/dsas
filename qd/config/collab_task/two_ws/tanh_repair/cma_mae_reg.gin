@@ -1,0 +1,6 @@
+# Configuration for MAP-Elites with two workspace collab task setting.
+include "config/collab_task/two_ws/tanh_repair/cma_mae.gin"
+
+experiment.name = "CMA-MAE Collab (2 ws, tanh repair reg)"
+
+ScenarioConfig.reg_obj_coeff = 50.0

@@ -1,0 +1,7 @@
+
+[[Trials]]
+num_trials=1
+num_cores = 4
+trial_config="search/config/trial/MAPELITES_BC.tml"
+
+

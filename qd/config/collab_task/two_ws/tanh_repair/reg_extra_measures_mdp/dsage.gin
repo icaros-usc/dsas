@@ -1,0 +1,11 @@
+# Configuration for DSAGE with two workspace collab task setting.
+sol_size = 9
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/cma_mae.gin"
+include "config/collab_task/surr_base.gin"
+
+experiment.name = "DSAGE Collab (mdp)"
+
+ScenarioManager.raw_em_input = True
+ScenarioManager.initial_sol_sigma = 0.5
+
+ScenarioConfig.sol_postprocessing_func = "mip_repair"

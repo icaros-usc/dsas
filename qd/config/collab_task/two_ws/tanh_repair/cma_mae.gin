@@ -1,0 +1,12 @@
+# Configuration for MAP-Elites with two workspace collab task setting.
+include "config/collab_task/two_ws/cma_mae.gin"
+
+experiment.name = "CMA-MAE Collab (2 ws, tanh repair)"
+
+Manager.emitter_types = [(@EvolutionStrategyEmitter, 5)]
+
+EvolutionStrategyEmitter.x0 = "[0] * 21"
+EvolutionStrategyEmitter.sigma0 = 0.1
+EvolutionStrategyEmitter.constraint_func = None
+
+ScenarioConfig.sol_postprocessing_func = "tanh_two_ws_repair"

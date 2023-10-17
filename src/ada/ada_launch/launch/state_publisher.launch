@@ -1,0 +1,9 @@
+<launch>
+    <param name="robot_description"
+           textfile="$(find ada_description)/robots/mico.urdf"/>
+    <param name="semantic_robot_description"
+           textfile="$(find ada_description)/robots/mico.srdf"/>
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="state_publisher"/>
+
+</launch>

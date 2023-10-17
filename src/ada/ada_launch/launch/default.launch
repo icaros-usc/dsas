@@ -1,0 +1,62 @@
+<launch>
+
+   <!-- Setup Script -->
+   <!--node name="setup" pkg="ada_launch" type="set_permissions.sh" /-->
+
+   <!-- the controller node itself -->
+   <node pkg="mico_hardware" 
+          name="ros_control_kinova_mico" 
+          type="mico_hardware" 
+          output="screen" />
+
+   <!-- load controllers -->
+   <rosparam file="$(find ada_launch)/config/controllers.yaml" command="load" />
+   
+   <node name="controller_spawner_started" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen"
+      args="
+         joint_state_controller" />
+   <node name="controller_spawner_stopped" pkg="controller_manager" type="spawner" respawn="false"
+      output="screen"
+      args="
+         --stopped
+         velocity_joint_mode_controller
+         position_joint_mode_controller
+         traj_controller
+         pos_j1_controller
+         pos_j2_controller
+         pos_j3_controller
+         pos_j4_controller
+         pos_j5_controller
+         pos_j6_controller
+         pos_f1_controller
+         pos_f2_controller
+         vel_j1_controller
+         vel_j2_controller
+         vel_j3_controller
+         vel_j4_controller
+         vel_j5_controller
+         vel_j6_controller
+         vel_f1_controller
+         vel_f2_controller
+         " />
+   
+   <!-- load a nice urdf -->
+   <param name="robot_description"
+          command="cat $(find ada_description)/robots/mico.urdf"/>
+   
+   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" />
+
+   <!-- Camera -->
+   <!--<include file="$(find softkinetic_driver)/launch/softkinetic_camera_ds325.launch"/>-->
+
+   <!-- Camera Transform -->
+<!--
+   <node name="static_transform" pkg="tf" type="static_transform_publisher" respawn="false" output="screen" 
+      args="0.0473 0.0541 -0.09 -0.6947 0.7030 -0.1396 0.0619 Hand_Link /base_rgbd_camera_link 10"/>
+-->
+
+   <!-- April Tags -->
+   <!--include file="$(find apriltags)/launch/percy.launch"/-->
+
+</launch>

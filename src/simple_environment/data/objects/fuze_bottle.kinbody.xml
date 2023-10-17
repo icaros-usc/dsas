@@ -1,0 +1,13 @@
+<KinBody name="fuze_bottle">
+  <Body type="dynamic" name="fuze_bottle">
+    <Geom type="box" modifiable="false">
+      <Render>fuze_bottle_scan.dae</Render>
+      <Translation> 0 -0.06 0 </Translation>
+      <RotationAxis>1 0 0 -90</RotationAxis>
+    </Geom>   
+        <Geom type="sphere" group="spheres">
+      <Translation>0 0 0.07</Translation>
+      <Radius>0.1</Radius>
+    </Geom>
+  </Body>
+</KinBody>

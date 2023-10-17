@@ -1,0 +1,5 @@
+
+initial_population=100
+mutation_power_pos=0.01
+mutation_power_disturb = 0.005
+batch_size = 20

@@ -1,0 +1,10 @@
+# Configuration for DSAGE debugging.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/dsage.gin"
+
+experiment.name = "DSAGE Collab (debug)"
+
+Manager.reload_save_freq = 1
+Manager.save_separate_em_data = True
+
+SurrogateModel.use_occ_net = False
+PredictNet.occ_input = False

@@ -1,0 +1,6 @@
+{
+    "morsel_topic": "/perception/morsel_dev",
+    "pose_topic": "/perception/pose_dev",
+    "node_name": "adabitefinder_dev",
+    "mask_filename": "mask_320x240.png"
+}

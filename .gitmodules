@@ -1,0 +1,3 @@
+[submodule "qd/external/pyribs"]
+	path = qd/external/pyribs
+	url = https://github.com/icaros-usc/pyribs

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<KinBody name="fork">
+  <Body name="handle">
+    <Geom type="cylinder">
+      <radius>0.025</radius>
+      <height>0.06</height>
+    </Geom>
+  </Body>
+  <Body name="body">
+    <Geom type="box">
+      <extents>.0125 .03 .005</extents>
+      <Translation>0 .03 0</Translation>
+    </Geom>
+  </Body>
+  <Body name="tines">
+    <Translation>0 .1 0.018</Translation>
+    <RotationAxis>1. 0. 0. 0.</RotationAxis>
+    <Geom type="box">
+      <extents>.0125 .0255 .005</extents>
+    </Geom>    
+  </Body>
+  <Body name="tinetip">
+    <offsetfrom>tines</offsetfrom>
+    <Translation>0. 0.07 0.</Translation>
+  </Body>
+</KinBody>

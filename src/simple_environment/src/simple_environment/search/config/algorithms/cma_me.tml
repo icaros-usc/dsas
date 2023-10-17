@@ -1,0 +1,5 @@
+emitter_count = 5
+mutation_power=0.01
+population_size= 37
+initial_population = 0
+emitter_type = "imp"

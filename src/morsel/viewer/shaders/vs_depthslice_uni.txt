@@ -1,0 +1,18 @@
+// depth slice shader (fragment)
+// Author: Pyry Matikainen (@PyryM, pkmatikainen@gmail.com)
+// 
+
+varying vec2 v_uv_depth;
+varying vec2 v_uv_color;
+
+uniform vec4 depthUVParams;
+uniform vec4 colorUVParams;
+
+void main() {
+	vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+	gl_Position = projectionMatrix * mvPosition;
+
+	// compute true uv params from offsets
+	v_uv_depth = (uv * depthUVParams.xy) + depthUVParams.zw;
+	v_uv_color = (uv * colorUVParams.xy) + colorUVParams.zw;
+}

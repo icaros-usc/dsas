@@ -1,0 +1,133 @@
+# the finger efforts are likely current.
+# for the other joints it's torque in Nm
+soft_limits:
+  eff: [16,16,16,10,10,10,1.3,1.3]
+
+# whole-arm joint_state publisher
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 500
+
+# mode-switching controllers
+position_joint_mode_controller:
+  type: pr_ros_controllers/JointModeController
+  joint_mode: 1 # position
+velocity_joint_mode_controller:
+  type: pr_ros_controllers/JointModeController
+  joint_mode: 2 # velocity
+
+# per-joint position controllers
+pos_j1_controller:
+  type: pr_ros_controllers/PrJointPositionController
+  joint: mico_joint_1
+pos_j2_controller:
+  type: pr_ros_controllers/PrJointPositionController
+  joint: mico_joint_2
+pos_j3_controller:
+  type: pr_ros_controllers/PrJointPositionController
+  joint: mico_joint_3
+pos_j4_controller:
+  type: pr_ros_controllers/PrJointPositionController
+  joint: mico_joint_4
+pos_j5_controller:
+  type: pr_ros_controllers/PrJointPositionController
+  joint: mico_joint_5
+pos_j6_controller:
+  type: pr_ros_controllers/PrJointPositionController
+  joint: mico_joint_6
+pos_f1_controller:
+  type: pr_ros_controllers/PrJointPositionController
+  joint: mico_joint_finger_1
+pos_f2_controller:
+  type: pr_ros_controllers/PrJointPositionController
+  joint: mico_joint_finger_2
+
+# per-joint velocity controllers
+vel_j1_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: mico_joint_1
+vel_j2_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: mico_joint_2
+vel_j3_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: mico_joint_3
+vel_j4_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: mico_joint_4
+vel_j5_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: mico_joint_5
+vel_j6_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: mico_joint_6
+vel_f1_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: mico_joint_finger_1
+vel_f2_controller:
+  type: velocity_controllers/JointVelocityController
+  joint: mico_joint_finger_2
+
+pid_j1_controller:
+  type: pr_ros_controllers/PrJointVelocityController
+  joint: mico_joint_1
+  p: 3
+  i: 0
+  d: 0
+pid_j2_controller:
+  type: pr_ros_controllers/PrJointVelocityController
+  joint: mico_joint_2
+  p: 3
+  i: 0
+  d: 0
+pid_j3_controller:
+  type: pr_ros_controllers/PrJointVelocityController
+  joint: mico_joint_3
+  p: 3
+  i: 0
+  d: 0
+pid_j4_controller:
+  type: pr_ros_controllers/PrJointVelocityController
+  joint: mico_joint_4
+  p: 3
+  i: 0
+  d: 0
+pid_j5_controller:
+  type: pr_ros_controllers/PrJointVelocityController
+  joint: mico_joint_5
+  p: 3
+  i: 0
+  d: 0
+pid_j6_controller:
+  type: pr_ros_controllers/PrJointVelocityController
+  joint: mico_joint_6
+  p: 3
+  i: 0
+  d: 0
+d_f1_controller:
+  type: pr_ros_controllers/PrJointVelocityController
+  joint: mico_joint_finger_1
+  p: 1
+  i: 0
+  d: 0
+pid_f2_controller:
+  type: pr_ros_controllers/PrJointVelocityController
+  joint: mico_joint_finger_2
+  p: 1
+  i: 0
+  d: 0
+# trajectory controller
+traj_controller:
+  type: velocity_controllers/JointTrajectoryController
+  joints: [mico_joint_1, mico_joint_2, mico_joint_3, mico_joint_4, mico_joint_5, mico_joint_6, mico_joint_finger_1, mico_joint_finger_2]
+  constraints:
+    stopped_velocity_tolerance: 1.0
+  gains: # Required because we're controlling a velocity interface
+    mico_joint_1: {p: 5,  d: 0, i: 0, i_clamp: 1}
+    mico_joint_2: {p: 5,  d: 0, i: 0, i_clamp: 1}
+    mico_joint_3: {p: 5,  d: 0, i: 0, i_clamp: 1}
+    mico_joint_4: {p: 5,  d: 0, i: 0, i_clamp: 1}
+    mico_joint_5: {p: 5,  d: 0, i: 0, i_clamp: 1}
+    mico_joint_6: {p: 5,  d: 0, i: 0, i_clamp: 1}
+    mico_joint_finger_1: {p: 1,  d: 0, i: 0, i_clamp: 1}
+    mico_joint_finger_2: {p: 1,  d: 0, i: 0, i_clamp: 1}     

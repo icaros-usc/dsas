@@ -1,0 +1,9 @@
+(human optimal, objects line)  python visualizeEliteJoystick.py -c ../src/simple_environment/search/config/elite_map/BC_2.tml --cell_x 5 --cell_y 22
+(human suboptimal, objects side) python visualizeEliteJoystick.py -c ../src/simple_environment/search/config/elite_map/BC_2.tml --cell_x 9 --cell_y 83
+(human optimal, objects side)  python visualizeEliteJoystick.py -c ../src/simple_environment/search/config/elite_map/BC_2.tml --cell_x 9 --cell_y 83
+
+(human suboptimal, obstacle, blend)  python visualizeEliteSingleOpenraveObstacle_3BC.py -c ../src/simple_environment/search/config/elite_map/BC_obstacle_new.tml --cell_x 8 --cell_y 84 --cell_z 1
+(human suboptimal, obstacle, shared_auton)  python visualizeEliteSingleOpenraveObstacle_3BC.py -c ../src/simple_environment/search/config/elite_map/BC_obstacle_new.tml --cell_x 4 --cell_y 84 --cell_z 1
+
+(human optimal, obstacle, blend)  python visualizeEliteSingleOpenraveObstacle_3BC.py -c ../src/simple_environment/search/config/elite_map/BC_obstacle_new.tml --cell_x 0 --cell_y 3 --cell_z 1 
+(human optimal, obstacle, blend)  python visualizeEliteSingleOpenraveObstacle_3BC.py -c ../src/simple_environment/search/config/elite_map/BC_obstacle_new.tml --cell_x 0 --cell_y 3 --cell_z 1 

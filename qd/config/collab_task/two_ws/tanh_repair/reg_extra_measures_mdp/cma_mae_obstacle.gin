@@ -1,0 +1,11 @@
+# Configuration for MAP-Elites with two workspace and obstacle collab task setting.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/cma_mae.gin"
+
+experiment.name = "CMA-MAE Collab (obstacle)"
+
+Manager.sol_size = 9 # 3 points (Each with xy coordinates) + 1 obstacle (xyr).
+
+EvolutionStrategyEmitter.x0 = "[0] * 9"
+
+ScenarioConfig.sol_postprocessing_func = "tanh_two_ws_repair_obstacle"
+ScenarioConfig.reg_obj_coeff = 10.0

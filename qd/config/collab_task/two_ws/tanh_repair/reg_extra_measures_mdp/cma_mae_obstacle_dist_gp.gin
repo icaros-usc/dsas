@@ -1,0 +1,18 @@
+# Configuration for MAP-Elites with two workspace and obstacle collab task setting.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/cma_mae_obstacle.gin"
+
+experiment.name = "CMA-MAE Collab (obstacle, distance, wrong goal probability)"
+
+ScenarioConfig.measure_names = [
+  "calc_distance_between_objects",
+  "highest_wrong_goal_prob",
+]
+
+GridArchive.dims = [100, 100]
+GridArchive.ranges = [[0, 0.3], [0, 1]]
+
+train/GridArchive.dims = [100, 100, 2, 2, 2]
+train/GridArchive.ranges = [[0, 0.3], [0, 1], [0, 1], [0, 1], [0, 1]]
+
+downsample/GridArchive.dims = [20, 20, 2, 2, 2]
+downsample/GridArchive.ranges = [[0, 0.3], [0, 1], [0, 1], [0, 1], [0, 1]]

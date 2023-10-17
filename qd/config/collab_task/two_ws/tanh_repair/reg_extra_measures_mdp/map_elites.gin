@@ -1,0 +1,11 @@
+# Configuration for MAP-Elites with two workspace collab task setting.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/cma_mae.gin"
+
+experiment.name = "Random Collab"
+
+Manager.emitter_types = [(@GaussianEmitter, 1)]
+
+GaussianEmitter.sigma = 0.1
+GaussianEmitter.bounds = None
+GaussianEmitter.batch_size = 30
+GaussianEmitter.x0 = "[0, 0.6, 0.05] * 3"

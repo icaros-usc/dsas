@@ -1,0 +1,17 @@
+In order to zero the MICO, use the joystick to move 
+the arm into the position shown by the jpgs. It is 
+easier to do this using joint-control.
+The pdf includes details about which direction is 
+positive or negative, but the images do NOT 
+correspond to the zero position.
+Once in position, launch Jacosoft and go to the 
+Roboticist tab. Select "set zero position" and press
+the button "Send to all". There will be no pop-up or
+feedback that anything has changed. Reboot the MICO.
+Once rebooted, if you are in the position shown in 
+the jpgs, go to the Diognosis tab, then the JACO 
+health center. Here you can see the coordinates. On
+the bottom right you can select joint coordinates. 
+The joints should all say about 180 degrees. Switch
+to Cartesian control and see if it behaves properly.
+

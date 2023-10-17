@@ -1,0 +1,5 @@
+algorithm = "ISOLINEDD"
+trial_name="ISOLINEDD_BC"
+num_simulations= 10000
+algorithm_config = "search/config/algorithms/isoline_dd.tml"
+elite_map_config = "search/config/elite_map/BC.tml"

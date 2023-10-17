@@ -1,0 +1,31 @@
+# Configuration for CMA-MAE with two bottles in shared autonomy.
+include "config/shared_autonomy/old/map_elites.gin"
+
+experiment.name = "CMA-MAE Scenario"
+
+Manager.emitter_types = [(@EvolutionStrategyEmitter, 5)]
+Manager.train_archive_type = @train/GridArchive
+
+EvolutionStrategyEmitter.x0 = [0.6, 0.125, 0.6, 0.125, 0, 0, 0, 0, 0] # Halfway between bounds.
+EvolutionStrategyEmitter.sigma0 = 0.01
+EvolutionStrategyEmitter.ranker = "imp"
+EvolutionStrategyEmitter.selection_rule = "mu"
+EvolutionStrategyEmitter.restart_rule = "basic"
+EvolutionStrategyEmitter.bounds = [
+  [0.5, 0.7], # x bounds
+  [-0.05, 0.2], # y bounds
+  [0.5, 0.7],
+  [-0.05, 0.2],
+  [-0.05, 0.05], # disturbance bounds
+  [-0.05, 0.05],
+  [-0.05, 0.05],
+  [-0.05, 0.05],
+  [-0.05, 0.05],
+]
+EvolutionStrategyEmitter.batch_size = 37
+
+# Needs to be slightly below 0 so that solutions with 0 objective get inserted.
+train/GridArchive.dims = [25, 100]
+train/GridArchive.ranges = [[0, 0.32], [0, 0.112]]
+train/GridArchive.threshold_min = -1e-6
+train/GridArchive.learning_rate = 0.01

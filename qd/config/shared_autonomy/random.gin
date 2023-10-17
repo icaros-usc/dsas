@@ -1,0 +1,10 @@
+# Configuration for Random with two bottles in shared autonomy.
+include "config/shared_autonomy/map_elites.gin"
+
+experiment.name = "Random SA"
+
+Manager.emitter_types = [(@UniformRandomEmitter, 1)]
+
+UniformRandomEmitter.solution_dim = 9
+UniformRandomEmitter.bounds = [[0.52, 0.68], [-0.08, 0.18], [0.52, 0.68], [-0.08, 0.18], [-0.05, 0.05], [-0.05, 0.05], [-0.05, 0.05], [-0.05, 0.05], [-0.05, 0.05]]
+UniformRandomEmitter.batch_size = 100

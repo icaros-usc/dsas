@@ -1,0 +1,18 @@
+{
+	"hfov": 58.0,
+	"vfov": 45.0,
+	"hsize": 640.0,
+	"vsize": 480.0,
+	"downscale_factor": 1.0,
+	"mask_filename": "mask_640x480.png",
+	"depth_topic": "/camera/depth/image",
+	"ransac_iters": 400,
+	"ransac_thresh": 0.01,
+	"bite_height": 0.01,
+	"min_radius": 100,
+	"max_radius": 200,
+	"radius_steps": 50,
+	"plate_margin": 14,
+	"rim_margin": 8, 
+	"rim_width": 10
+}

@@ -1,0 +1,38 @@
+p1_x = 0.6
+
+x_b = [0.6, 0.6]
+y_b = [0.0, 0.2]
+num_points = 1
+start_robot_pos =  [0.409,0.338]
+start_end_effector_pos = [0.41,0.05,0.95]
+morsel_height = 0.81 
+num_waypoints = 5
+
+
+map_size_1 = 20
+map_size_2 = 100
+
+has_obstacle = 1
+knows_obstacle = 1
+obstacle_pos_x = 0.49
+obstacle_pos_z = 0.86
+obstacle_radius = 0.09
+obstacle_padding = 0.02
+
+disturbance_max = 0.05
+disturbance_step = 0.01
+
+method="blend"
+blend_level = "timid"
+
+
+[[Map.Features]]
+name="calc_horizontal_distance"
+low=0.0
+high=0.2
+
+[[Map.Features]]
+name="calc_variation"
+low=0.0
+high= 0.112
+

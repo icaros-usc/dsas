@@ -1,0 +1,13 @@
+ScenarioConfig.measure_names = [
+  "calc_distance_between_objects",
+  "highest_wrong_goal_prob",
+]
+
+GridArchive.dims = [27, 65]
+GridArchive.ranges = [[0.05, 0.32], [0.35, 1]]
+
+train/GridArchive.dims = [27, 65, 2, 2, 2]
+train/GridArchive.ranges = [[0.05, 0.32], [0.35, 1], [-0.16, 0.16], [-0.16, 0.16], [-0.16, 0.16]]
+
+downsample/GridArchive.dims = [9, 13, 1, 1, 1]
+downsample/GridArchive.ranges = [[0.05, 0.32], [0.35, 1], [-0.16, 0.16], [-0.16, 0.16], [-0.16, 0.16]]

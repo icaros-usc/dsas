@@ -1,0 +1,29 @@
+# Configuration for MAP-Elites with two workspace collab task setting.
+include "config/collab_task/map_elites.gin"
+
+experiment.name = "CMA-MAE Collab (2 ws)"
+
+Manager.emitter_types = [(@ws1/EvolutionStrategyEmitter, 3), (@ws2/EvolutionStrategyEmitter, 3)]
+Manager.train_archive_type = @train/GridArchive
+
+ws1/EvolutionStrategyEmitter.x0 = "[0.6, 0.05] * 2 + [0.218, 0.626] + [0] * 15"
+ws2/EvolutionStrategyEmitter.x0 = "[0.218, 0.626] * 2 + [0.6, 0.05] + [0] * 15"
+EvolutionStrategyEmitter.sigma0 = 0.01
+EvolutionStrategyEmitter.ranker = "imp"
+EvolutionStrategyEmitter.selection_rule = "mu"
+EvolutionStrategyEmitter.restart_rule = "basic"
+EvolutionStrategyEmitter.bounds = None
+EvolutionStrategyEmitter.batch_size = 37
+EvolutionStrategyEmitter.constraint_func = "collab_task_two_workspace"
+
+GridArchive.dims = [100, 100]
+GridArchive.ranges = [[0, 0.3], [0, 0.2]]
+
+train/GridArchive.dims = [100, 100]
+train/GridArchive.ranges = [[0, 0.3], [0, 0.2]]
+# Needs to be slightly below 0 so that solutions with 0 objective get inserted.
+train/GridArchive.threshold_min = -1e-6
+train/GridArchive.learning_rate = 0.01
+
+downsample/GridArchive.dims = [20, 20]
+downsample/GridArchive.ranges = [[0, 0.3], [0, 0.2]]

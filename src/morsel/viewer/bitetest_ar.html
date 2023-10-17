@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>mesh test</title>
+		<meta charset="utf-8">
+		<style>
+			body {
+				margin: 0px;
+				background-color: #000000;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+
+		<script src="lib/three.min.js"></script>
+		<script src="lib/jquery.min.js"></script>
+		<script src="lib/stats.min.js"></script>
+		<script src="js/armature.js"></script>
+		<script src="js/basegrid.js"></script>
+
+		<script src="js/arshim.js"></script>
+		<script src="js/vuforia.js"></script>
+
+		<script src="lib/eventemitter2.min.js"></script>
+		<script src="lib/roslib.min.js"></script>
+
+		<script>
+
+			var camera, scene, renderer;
+			var mesh;
+			var stats;
+
+			var windowX, windowY;
+			var windowHalfX, windowHalfY;
+
+			var dae;
+			var thegrid;
+			var thearmature = null;
+
+			var arRoot;
+
+			var connection = null;
+			var opened = false;
+
+			var jgrabber;
+
+			var t = 0.0;
+
+			var shaderlib = null;
+			var linetex;
+
+			var srcWidth = 320;
+			var srcHeight = 240;
+			var srcAspect = srcWidth / srcHeight;
+
+			var detectionCircles = [];
+			var maxCircles = 10;
+
+			var debugData=  [[[161, 133], 9, 391.59231482002036], [[99, 186], 9, 352.00939606136274], [[128, 175], 9, 340.94395741745524], [[56, 186], 9, 335.03785543218015], 
+							 [[148, 218], 9, 303.29791141828662], [[80, 153], 9, 286.89506558080495], [[110, 122], 9, 260.94036939063812]];
+
+			$(function(){
+				init();
+			});
+
+			function getSize() {
+				windowX = window.innerWidth;
+				//windowY = window.innerHeight;
+				windowY = window.innerHeight;
+				windowHalfX = windowX / 2.0;
+				windowHalfY = windowY / 2.0;
+				console.log("WX: " + windowX + ", WY: " + windowY);
+			}
+
+			function shaders_loaded() {
+				console.log("Shaders loaded!");
+				final_init();
+			}
+
+
+			function final_init() {
+				createCircles();
+				updateCircles(debugData);
+			}
+
+			function createLineCircle(rad, npts) {
+				console.log("Creating line circle...");
+				var pts = [];
+				var dt = 2.0 * Math.PI / (npts - 1);
+				for(var i = 0; i < npts; ++i) {
+					var theta = dt * i;
+					pts.push([Math.cos(theta) * rad, 0.0, Math.sin(theta) * rad]);
+				}
+				var pathLine = new Orbitline({npts: pts.length, linewidth: 1.0, linetex: linetex}, shaderlib);
+				pathLine.updateGeometry(pts);
+				return pathLine;
+				//pathLine.getTHREENode().rotation.x = Math.PI / 2.0;	
+			}
+
+			function updateCircles(data) {
+				var tarDims = [30, 30];
+
+				for(var i = 0; i < detectionCircles.length; ++i) {
+					var tempCircle = detectionCircles[i].getNode();
+					if(i < data.length) {
+						var posx = ((data[i][0][1] / srcWidth) - 0.5) * tarDims[0];
+						var posy = -((data[i][0][0] / srcHeight) - 0.5) * tarDims[1];
+						var rad = (data[i][1] / srcWidth) * tarDims[0];
+						tempCircle.position.set(posx, 0.0, posy);
+						tempCircle.scale.set(rad, rad, rad);
+						tempCircle.visible = true;
+					} else {
+						tempCircle.visible = false;
+					}
+				}			
+			}
+
+			function createCircles() {
+				for(var i = 0; i < maxCircles; ++i) {
+					var tempCircle = createLineCircle(1.0, 30);
+					detectionCircles.push(tempCircle);
+					arRoot.add(tempCircle.getNode());
+				}
+			}
+
+
+			function init() {
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+
+				stats = new Stats();
+				stats.domElement.style.position = 'absolute';
+				stats.domElement.style.top = '0px';
+				document.body.appendChild( stats.domElement );
+
+				getSize();
+
+				//
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 1000 );
+				scene = new THREE.Scene();
+
+				// add some lights so we can see stuff
+				scene.add( new THREE.AmbientLight( 0xcccccc ) );
+
+				arRoot = new THREE.Object3D();
+				scene.add(arRoot);
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+				thegrid = new BaseGrid(200.0, 200.0, 20.0);
+				thegrid.addToScene(arRoot);
+				thegrid.node.rotation.x = Math.PI / 2.0;
+
+				console.log("Loading datasset...");
+				var bname = "http://" + window.location.hostname + ":8080/database/";
+				init_vuforia(bname + "herb_targets.xml", 
+			 				 bname + "herb_targets.dat");
+
+
+				linetex = THREE.ImageUtils.loadTexture( 'orange.png' );
+				linetex.wrapS = linetex.wrapT = THREE.RepeatWrapping;
+
+				shaderlib = new ShaderLibrary("shaders/");
+				shaderlib.setLoadCallback(shaders_loaded);
+				shaderlib.addShader("vs_depthslice_uni", "vs_depthslice_uni.txt");
+				shaderlib.addShader("fs_depthslice_uni", "fs_depthslice_uni.txt");
+				shaderlib.addShader("vs_depthslice", "vs_depthslice.txt");
+				shaderlib.addShader("fs_depthslice", "fs_depthslice.txt");
+				shaderlib.addShader("vs_line", "vs_screenline.txt");
+				shaderlib.addShader("fs_line", "fs_solid.txt");
+				shaderlib.addShader("fs_uvline", "fs_uvline.txt");
+				shaderlib.loadShaders();
+
+				animate();
+
+				//init_ws();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				t += 1.0 / 60.0;
+
+				// if(thearmature) {
+				// 	thearmature.setJointRotation("l_arm_elx", Math.cos(t));
+				// 	thearmature.setJointRotation("l_arm_usy", t);
+				// }
+
+				for(var vname in current_tracking_data) {
+					pose = current_tracking_data[vname];
+					arRoot.rotation.setFromRotationMatrix(pose.rotation);
+					arRoot.position.copy(pose.position);
+					//arRoot.scale.set(100.0, 100.0, 100.0);
+					//cubeidx++;
+				}
+
+				requestAnimationFrame( animate );
+
+				//updateCamera();
+
+				//composer.render();
+				renderer.render(scene, camera);
+
+				stats.update();
+
+			}
+
+			function init_ws() {
+				connection = new WebSocket("ws://localhost:9000");
+				connection.onopen = function(event) {
+					console.log("Opened connection!");
+					opened = true;
+				};
+
+				connection.onmessage = function(event) {
+					//console.log(event.data);
+					var jdata = JSON.parse(event.data);
+					if(thearmature) {
+						thearmature.setJoints(jdata);
+					}
+				};
+
+				window.setInterval(ping_data, 100);
+			}
+
+			function ping_data() {
+				if(connection && opened) {
+					connection.send("ping");
+				}
+			}
+
+		</script>
+
+	</body>
+</html>

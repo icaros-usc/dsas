@@ -1,0 +1,26 @@
+// depth slice shader (fragment)
+// Author: Pyry Matikainen (@PyryM, pkmatikainen@gmail.com)
+// 
+
+varying vec2 v_uv_depth;
+varying vec2 v_uv_color;
+
+uniform vec4 depthDecodeParams;
+uniform float thickness;
+uniform float sliceDepth;
+
+uniform sampler2D combinedMap;
+
+void main() {
+	vec4 codedDepth = texture2D(combinedMap, v_uv_depth);
+
+	// ignore the alpha of the coded depth texture, force to be 1.0
+	float srcDepth = dot(depthDecodeParams, vec4(codedDepth.rgb, 1.0));
+
+	// only draw if the pixel's depth is in range (depth, depth+thickness)
+	if(sliceDepth < srcDepth || sliceDepth > srcDepth + thickness) 
+		discard;
+
+	vec4 color = texture2D(combinedMap, v_uv_color);
+	gl_FragColor = vec4(color.rgb, 1.0);
+}

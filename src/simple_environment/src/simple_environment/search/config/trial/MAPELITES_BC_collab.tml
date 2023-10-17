@@ -1,0 +1,5 @@
+algorithm = "MAPELITES"
+trial_name="MAPELITES_BC_Collab"
+num_simulations= 10000
+algorithm_config = "search/config/algorithms/map_elites.tml"
+elite_map_config = "search/config/elite_map/BC_collab.tml"

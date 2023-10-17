@@ -1,0 +1,22 @@
+<launch>
+	<arg name="real" default="false" />
+
+	<!-- Ada controller -->
+	<include file="$(find ada_launch)/launch/default.launch" />
+	<!-- Camera -->
+	<include file="$(find openni2_launch)/launch/openni2.launch" />
+	<!-- Morsel detector -->
+	<node pkg="morsel" name="biteserver" type="biteserver.py" args="$(find morsel)/detector/structureio_settings.json $(find morsel)/detector/verbose.json"/>
+
+	<!-- THE FOLLOWING TWO GROUPS ARE MUTUALLY EXCLUSIVE -->
+	<!-- Bite feeding demo in simulation-->
+	<group unless="$(arg real)">
+		<node pkg="ada_meal_scenario" name="runBiteServing" type="runBiteServing.py" args="--detection-sim" output="screen"/> 
+	</group>
+	<!-- Bite feeding demo in real world -->
+	<group if="$(arg real)">
+		<node pkg="ada_meal_scenario" name="runBiteServing" type="runBiteServing.py" args="--real" output="screen"/> 
+	</group>
+
+
+</launch>

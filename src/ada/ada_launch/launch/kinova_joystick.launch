@@ -1,0 +1,7 @@
+<launch>
+    <rosparam>
+      ada/kinova_joy_node/autorepeat_rate: 100
+    </rosparam>
+    <node ns="ada" pkg="joy" output="screen" type="joy_node" name="kinova_joy_node" />
+</launch>
+

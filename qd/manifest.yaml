@@ -1,0 +1,228 @@
+Paper:
+  Shared Workspace Collaboration dist_gp:
+    old_min_obj: 0.0
+    min_obj: 0.0
+    max_obj: 100.0
+    archive_size: 1755
+    algorithms:
+      DSAS:
+        - dir: 2023-01-27_22-56-15_dqd-dsage-dist-gp_fbe9549f-fa49-4d7e-9c80-b6f88afb3fea
+        - dir: 2023-01-27_23-06-56_dqd-dsage-dist-gp_6f1673ba-a406-4363-85f6-757c0841a0d9
+        - dir: 2023-01-27_23-17-11_dqd-dsage-dist-gp_5735a650-5b0a-4a40-ad09-a1d2aa2d0c11
+        - dir: 2023-01-27_23-17-11_dqd-dsage-dist-gp_d9909e6a-21be-411f-934c-6244d3423c19
+        - dir: 2023-01-27_23-22-37_dqd-dsage-dist-gp_7ead4461-df2c-4de6-8f05-63ca8f5fa864
+      SAS:
+        - dir: 2023-01-27_20-59-35_dsage-dist-gp_931afb29-7a7c-4ce1-bed5-37ca99e8bf07
+        - dir: 2023-01-27_21-17-19_dsage-dist-gp_e044d9e8-472f-435f-8a98-92e7c4a62d81
+        - dir: 2023-01-27_21-19-29_dsage-dist-gp_b9a28983-9509-4d86-82e3-77e55aff0278
+        - dir: 2023-01-27_21-30-52_dsage-dist-gp_2b7e5b8c-4c2d-425e-9820-0e561b248841
+        - dir: 2023-01-27_22-55-44_dsage-dist-gp_89b2ffb3-6201-49e8-bde2-82cfc78a0545
+      CMA-MAE:
+        - dir: 2023-01-27_20-58-32_cma-mae-dist-gp_9f9e7f47-73de-45bb-80f3-1e03788be6e0
+        - dir: 2023-01-27_20-58-32_cma-mae-dist-gp_d56fa2c2-06f1-4e27-99f3-f3c3ab133f8b
+        - dir: 2023-01-27_20-59-04_cma-mae-dist-gp_23777113-4aa5-47b7-be54-c0b3a5fdc57a
+        - dir: 2023-01-27_20-59-04_cma-mae-dist-gp_57937d2b-e3f4-476b-99a4-ad525b553a51
+        - dir: 2023-01-27_20-59-35_cma-mae-dist-gp_06fda50e-e713-4c0c-8517-09bac87ab712
+        - dir: 2023-01-30_18-16-34_cma-mae-dist-gp_49891316-c6f2-4b25-bc32-aec5bfb42980
+        - dir: 2023-01-30_18-16-34_cma-mae-dist-gp_76fb43d1-b9e8-4e49-91c9-f137be4312b8
+        - dir: 2023-01-30_18-16-34_cma-mae-dist-gp_b212a0ab-2a57-4b17-850b-8302ef35e6c4
+        - dir: 2023-01-30_18-16-34_cma-mae-dist-gp_dddb7038-5305-4217-bcf2-428c7a4927d2
+        - dir: 2023-01-30_18-16-34_cma-mae-dist-gp_f0a58d9d-a3d8-40df-b93d-9aad5df86386
+      MAP-Elites:
+        - dir: 2023-01-28_15-44-59_map-elites-dist-gp_47a7f81c-0653-4f39-bce4-d661801929c6
+        - dir: 2023-01-29_03-51-23_map-elites-dist-gp_951ea5e7-4275-4e69-86ca-b574fb5c1628
+        - dir: 2023-01-29_03-51-23_map-elites-dist-gp_ec93cd54-0f4c-4c57-b320-3f6bc6b2f7f2
+        - dir: 2023-01-29_03-51-23_map-elites-dist-gp_eea3934a-8465-4eb8-a1e9-2d45f36640b9
+        - dir: 2023-01-29_03-51-23_map-elites-dist-gp_f8dacea4-df2b-49c4-81a9-263f2a9338ef
+        - dir: 2023-01-30_18-16-59_map-elites-dist-gp_7accd42f-3f57-440f-9a82-641fc92db2e8
+        - dir: 2023-01-30_18-16-59_map-elites-dist-gp_80d3ff4b-899e-4065-a280-033ca4adc742
+        - dir: 2023-01-30_18-16-59_map-elites-dist-gp_8a07d22c-c519-4f97-9880-731b09e29c73
+        - dir: 2023-01-30_18-16-59_map-elites-dist-gp_a52e6789-15a5-43ff-b499-fe4a552c3209
+        - dir: 2023-01-30_18-16-59_map-elites-dist-gp_b43aaee9-575c-4cb0-b51f-8bc99e0d0ce7
+      Random Search:
+        - dir: 2023-01-29_03-51-23_random-dist-gp_20d68172-1640-40f6-a2ba-004a39f68575
+        - dir: 2023-01-29_03-51-23_random-dist-gp_3f4dd5d8-e451-4ae6-a935-61ce0c500408
+        - dir: 2023-01-29_03-51-23_random-dist-gp_75176dc1-437c-44a0-b8d1-43f47df5ba6e
+        - dir: 2023-01-29_03-51-23_random-dist-gp_afa812b0-1cae-418f-9010-2106030cf960
+        - dir: 2023-01-29_03-51-23_random-dist-gp_fd384e65-0d26-4ce7-8420-a726db99d34d
+        - dir: 2023-01-30_18-16-59_random-dist-gp_0295e299-89b3-433e-90a5-b2f37f432bb9
+        - dir: 2023-01-30_18-16-59_random-dist-gp_1175cf4a-6310-49d2-94d4-dc08ae0edc4b
+        - dir: 2023-01-30_18-16-59_random-dist-gp_7bdc7b8f-ecc6-46ae-a7c6-c12c4957631e
+        - dir: 2023-01-30_18-16-59_random-dist-gp_8284984f-d9d6-40e3-b2ac-060289bb8216
+        - dir: 2023-01-31_16-22-48_random-dist-gp_6c139679-5a73-4e66-9c26-70de0c42b772
+  Shared Workspace Collaboration path_overlap:
+    old_min_obj: 0.0
+    min_obj: 0.0
+    max_obj: 100.0
+    archive_size: 1000
+    algorithms:
+      DSAS:
+        - dir: 2023-01-28_01-53-19_dqd-dsage-path-overlap_e4934d6f-121c-46c2-a061-e5558f856f41
+        - dir: 2023-01-28_06-21-36_dqd-dsage-path-overlap_ca72bf16-2caf-4451-90f4-daa54158b028
+        - dir: 2023-01-28_14-42-38_dqd-dsage-path-overlap_c2f029b2-725a-46b5-808f-1be3205b7601
+        - dir: 2023-01-28_14-48-34_dqd-dsage-path-overlap_0b6897a4-6ea8-4c91-8448-ef3085d507ec
+        - dir: 2023-01-28_14-49-06_dqd-dsage-path-overlap_62f7d16a-e5d4-4553-8db0-526bd915e65a
+      SAS:
+        - dir: 2023-01-27_23-29-44_dsage-path-overlap_a412f048-3b48-49b1-a91a-acca71cfa697
+        - dir: 2023-01-27_23-36-19_dsage-path-overlap_4a61df01-7e00-4062-b09e-4db5cbd3ec43
+        - dir: 2023-01-27_23-36-19_dsage-path-overlap_cb29b069-a46b-4f19-ae3b-81b1e5c94fbf
+        - dir: 2023-01-28_00-02-42_dsage-path-overlap_01260525-a535-4f10-8ab5-3063e6fc2852
+        - dir: 2023-01-28_00-02-43_dsage-path-overlap_251baa0e-2499-4c7b-b4e2-ea1bb177b236
+      CMA-MAE:
+        - dir: 2023-01-27_23-22-37_cma-mae-path-overlap_5b0f604c-520c-4350-88e4-8f334d9a305a
+        - dir: 2023-01-27_23-22-37_cma-mae-path-overlap_81a7d283-4659-450b-b2ed-d2dbb2125d42
+        - dir: 2023-01-27_23-22-37_cma-mae-path-overlap_c8c833b9-8a70-4c50-a273-9896d40f377c
+        - dir: 2023-01-27_23-24-15_cma-mae-path-overlap_1ed210c7-13bf-48d7-87ea-c4b71590d9a2
+        - dir: 2023-01-27_23-24-15_cma-mae-path-overlap_48d01d8c-e26f-4618-bcbd-0d95b339797c
+        - dir: 2023-01-30_18-16-34_cma-mae-path-overlap_67a4d132-0d5d-4e04-ac42-5573d65c13c6
+        - dir: 2023-01-30_18-16-34_cma-mae-path-overlap_75c44018-1029-4c41-aaaf-1549324ae4b3
+        - dir: 2023-01-30_18-16-34_cma-mae-path-overlap_b91f97b3-3382-43b5-bb4f-254f0448cb5e
+        - dir: 2023-01-30_18-16-59_cma-mae-path-overlap_642b0fd0-6879-4427-81a4-6488814ab54a
+        - dir: 2023-01-30_18-16-59_cma-mae-path-overlap_c7da883e-f84f-4e14-8ddc-4a6c79c93834
+      MAP-Elites:
+        - dir: 2023-01-29_03-51-23_map-elites-path-overlap_4f0e1e9d-d6d0-47bd-b3cb-d21b1858f949
+        - dir: 2023-01-29_03-51-23_map-elites-path-overlap_9b2d8810-a12f-4915-95a6-7773fd6d15e1
+        - dir: 2023-01-29_03-54-22_map-elites-path-overlap_0f176459-73ce-4b4b-8963-1c6fa8fc9286
+        - dir: 2023-01-29_03-54-22_map-elites-path-overlap_811dd901-7b5e-45f3-8fb7-fa13371edbd6
+        - dir: 2023-01-29_03-55-19_map-elites-path-overlap_6fd1d381-a1d1-4fcf-aed3-85c341d9cde5
+        - dir: 2023-01-30_18-16-59_map-elites-path-overlap_65f9cd86-5406-4877-97b8-b764b7cb6fe1
+        - dir: 2023-01-30_18-17-30_map-elites-path-overlap_1fd8189b-153f-4c05-8be0-ba818d4b281f
+        - dir: 2023-01-30_19-46-08_map-elites-path-overlap_47e04add-9552-4df5-8066-c1980cf6a82b
+        - dir: 2023-01-30_19-46-09_map-elites-path-overlap_5d52ced0-589a-498d-bc6e-da5fe29c6234
+        - dir: 2023-01-30_19-46-09_map-elites-path-overlap_c1ba6df8-cb0d-42bd-8c7e-943c76c774cb
+      Random Search:
+        - dir: 2023-01-29_04-01-19_random-path-overlap_1991f794-1e0c-4750-bf63-ad3fba4b8ac4
+        - dir: 2023-01-29_04-01-19_random-path-overlap_bd2ed811-be5a-47b9-bb67-e372cdcc2a4a
+        - dir: 2023-01-29_04-01-20_random-path-overlap_22a163e9-7d36-4074-b192-c5647824cd34
+        - dir: 2023-01-29_04-01-20_random-path-overlap_46f166a4-7f36-4e42-a19c-6d9a5a382237
+        - dir: 2023-01-29_04-10-19_random-path-overlap_75dfb39f-45dd-4557-801e-fad3df6245b8
+        - dir: 2023-01-30_19-46-09_random-path-overlap_6077cc7b-09de-4fdd-86ff-a01f50d4226f
+        - dir: 2023-01-30_19-46-09_random-path-overlap_6b750ace-1a56-4f66-8f60-4067ed1af4b3
+        - dir: 2023-01-30_19-46-10_random-path-overlap_540d9b00-38da-4c09-afc3-c5bd3d964600
+        - dir: 2023-01-30_19-49-45_random-path-overlap_2db5b565-e8bf-4d24-abb9-d2ca6ea67299
+        - dir: 2023-01-30_23-09-20_random-path-overlap_2fa95567-ea6e-4579-a93d-a2650ba5f315
+  Shared Autonomy:
+    old_min_obj: 0.0
+    min_obj: 0.0
+    max_obj: 10.0
+    archive_size: 2500
+    algorithms:
+      DSAS:
+        - dir: 2023-01-30_11-40-37_dqd-dsage-sa_058b8e38-862e-4739-9a37-a5a744c9bc3f
+        - dir: 2023-01-30_11-40-37_dqd-dsage-sa_81cb5a71-4ac8-4928-89e5-000bfa734349
+        - dir: 2023-01-30_11-48-10_dqd-dsage-sa_fc4b93c1-970d-4ef7-ac47-d82cab0be0c9
+        - dir: 2023-01-30_11-48-40_dqd-dsage-sa_6374a73c-f439-4244-bfac-6a08aed81aba
+        - dir: 2023-01-30_14-32-34_dqd-dsage-sa_2058673b-14cc-439e-9944-f3d970fac555
+      SAS:
+        - dir: 2023-01-30_11-36-11_dsage-sa_498f9051-4fdf-4e53-b68b-09912f8c5abe
+        - dir: 2023-01-30_11-37-07_dsage-sa_61e080c0-30c5-4a6d-8fbe-91e4a480c048
+        - dir: 2023-01-30_11-37-07_dsage-sa_7c3288e2-9f9e-4928-a672-08ee5d04203f
+        - dir: 2023-01-30_11-40-06_dsage-sa_0d8e75da-e5e4-47b4-bff7-b11d064b77b0
+        - dir: 2023-01-30_11-40-06_dsage-sa_cd8617df-0441-447c-9834-dd7c24c48c5f
+      CMA-MAE:
+        - dir: 2023-01-30_14-33-04_cma-mae-sa_7754e2d7-2f48-4c24-839c-f9c3292fb3be
+        - dir: 2023-01-30_14-33-35_cma-mae-sa_178d48f7-dc2f-4225-bdd0-a2096240c344
+        - dir: 2023-01-30_14-34-05_cma-mae-sa_adcaa61f-f584-45f7-88e1-d12077c818f4
+        - dir: 2023-01-30_14-34-05_cma-mae-sa_dca85491-4cc9-4c34-9e86-13187aff3409
+        - dir: 2023-01-30_14-34-07_cma-mae-sa_a3679a18-8a4e-4881-9784-3280a07c1eab
+        - dir: 2023-01-30_23-28-16_cma-mae-sa_f4754cb4-77e5-41de-86c9-8f2f5a4528e9
+        - dir: 2023-01-30_23-47-08_cma-mae-sa_d5378608-7625-4bbb-b664-739ee9dd9e85
+        - dir: 2023-01-31_00-00-27_cma-mae-sa_93ae9134-55c8-40d9-86f6-15089e564aed
+        - dir: 2023-01-31_16-23-24_cma-mae-sa_c8df5dbb-34f7-4fde-be94-7266222e2085
+        - dir: 2023-01-31_16-23-50_cma-mae-sa_6a1f66c9-bc5d-4c7e-8701-ddc6ed4d72c7
+      MAP-Elites:
+        - dir: me_sa_reg_logs/2023-02-02_21-54-27_map-elites-sa_1a405146-9817-4df9-b3f8-c2f19643f08e
+        - dir: me_sa_reg_logs/2023-02-02_22-03-46_map-elites-sa_91ddf75e-6abd-47ad-9d47-6730a48e8383
+        - dir: me_sa_reg_logs/2023-02-02_22-42-12_map-elites-sa_3168956d-84f3-422e-bbb2-8bc0b995d0c7
+        - dir: me_sa_reg_logs/2023-02-02_23-36-06_map-elites-sa_94212dd8-7584-4e07-bb56-53b53c930598
+        - dir: me_sa_reg_logs/2023-02-02_23-53-29_map-elites-sa_e7de1e89-8092-452f-b48e-6adbb1b85a4a
+        - dir: me_sa_reg_logs/2023-02-03_00-29-13_map-elites-sa_62849402-9032-4828-b02a-6ffe50da8823
+        - dir: me_sa_reg_logs/2023-02-03_00-29-13_map-elites-sa_909f2284-c46b-42a0-8fdc-bcd214060480
+        - dir: me_sa_reg_logs/2023-02-03_00-29-13_map-elites-sa_e8a1f0e6-846a-4278-b700-5d4433d5074d
+        - dir: me_sa_reg_logs/2023-02-03_00-29-46_map-elites-sa_571037a5-e0fd-479d-a8c3-0aa1eb417724
+        - dir: me_sa_reg_logs/2023-02-03_09-51-29_map-elites-sa_14619506-77bf-4697-8a70-fb9cc1187fb9
+        # - dir: 2023-01-29_18-04-01_map-elites-sa_4dc8426a-422d-49da-b3ba-86243b10fd37
+        # - dir: 2023-01-29_18-05-32_map-elites-sa_97455c63-c138-4db7-a350-7d11def46183
+        # - dir: 2023-01-29_18-06-07_map-elites-sa_90c832ec-667b-40b6-8541-d325bca6f828
+        # - dir: 2023-01-29_18-08-39_map-elites-sa_57aae97f-38e4-4e0a-bf9b-877027332101
+        # - dir: 2023-01-29_18-11-15_map-elites-sa_ae80d207-8851-4ddd-b739-77338889a78d
+        # - dir: 2023-01-31_00-00-27_map-elites-sa_7483156f-fd88-42d8-bbe6-f19f713c5ff7
+        # - dir: 2023-01-31_00-00-40_map-elites-sa_04f872b4-4b2e-406d-8289-2c550964de78
+        # - dir: 2023-01-31_00-00-41_map-elites-sa_9d70c037-ce1a-4dfa-a01d-c4dbc4bef4f1
+        # - dir: 2023-01-31_16-24-13_map-elites-sa_1515dd4f-4160-40dc-8d89-c09fa41cce1c
+        # - dir: 2023-01-31_16-24-28_map-elites-sa_721c326d-743a-4489-af1b-2980181fea51
+      Random Search:
+        - dir: 2023-01-29_18-12-16_random-sa_da191a25-7d8b-4b33-84ae-18390d07f882
+        - dir: 2023-01-29_18-19-58_random-sa_e85b32da-40a3-4f8e-bf0d-7b6eb8689fd4
+        - dir: 2023-01-29_18-22-32_random-sa_d415e604-0511-4a95-98b0-941418645d1a
+        - dir: 2023-01-29_18-26-08_random-sa_20552334-a5c8-405c-9146-4ff88f56af81
+        - dir: 2023-01-29_18-36-30_random-sa_668076d3-804f-4586-8209-0a0defe890ed
+        - dir: 2023-01-30_18-28-11_random-sa_aa8fecac-3854-467a-928a-45fc2871b0ee
+        - dir: 2023-01-30_18-37-50_random-sa_0ca5f6b6-3db7-4045-8b44-bcdc8b951557
+        - dir: 2023-01-31_00-01-24_random-sa_3d9b4bfd-cc00-4a5e-8286-e066ad8e164c
+        - dir: 2023-01-31_00-01-24_random-sa_84a97938-7df0-4ad0-8157-7d42b60da12d
+        - dir: 2023-01-31_00-01-24_random-sa_908f3276-e760-4d2c-a3d2-b71df6d6e228
+Archive Visualization:
+  Shared Workspace Collaboration dist_gp:
+    heatmap: True
+    old_min_obj: 0.0
+    min_obj: 0.0
+    max_obj: 100.0
+    archive_size: 1755
+    xlabel: "Min Distance Between Goals"
+    xbounds: [0.05, 0.32]
+    ylabel: "Max Wrong Goal Belief Prob"
+    ybounds: [0.35, 1.0]
+    Algorithms:
+      DSAS:
+        logdir: 2023-01-27_22-56-15_dqd-dsage-dist-gp_fbe9549f-fa49-4d7e-9c80-b6f88afb3fea
+      SAS:
+        logdir: 2023-01-27_20-59-35_dsage-dist-gp_931afb29-7a7c-4ce1-bed5-37ca99e8bf07
+      CMA-MAE:
+        logdir: 2023-01-27_20-58-32_cma-mae-dist-gp_9f9e7f47-73de-45bb-80f3-1e03788be6e0
+      MAP-Elites:
+        logdir: 2023-01-28_15-44-59_map-elites-dist-gp_47a7f81c-0653-4f39-bce4-d661801929c6
+      Random Search:
+        logdir: 2023-01-29_03-51-23_random-dist-gp_20d68172-1640-40f6-a2ba-004a39f68575
+  Shared Workspace Collaboration path_overlap:
+    heatmap: True
+    old_min_obj: 0.0
+    min_obj: 0.0
+    max_obj: 100.0
+    archive_size: 1000
+    xlabel: "Robot Path Length"
+    xbounds: [1.0, 5.0]
+    ylabel: "Total Wait Time"
+    ybounds: [0.0, 5.0]
+    Algorithms:
+      DSAS:
+        logdir: 2023-01-28_01-53-19_dqd-dsage-path-overlap_e4934d6f-121c-46c2-a061-e5558f856f41
+      SAS:
+        logdir: 2023-01-27_23-29-44_dsage-path-overlap_a412f048-3b48-49b1-a91a-acca71cfa697
+      CMA-MAE:
+        logdir: 2023-01-27_23-22-37_cma-mae-path-overlap_5b0f604c-520c-4350-88e4-8f334d9a305a
+      MAP-Elites:
+        logdir: 2023-01-29_03-51-23_map-elites-path-overlap_4f0e1e9d-d6d0-47bd-b3cb-d21b1858f949
+      Random Search:
+        logdir: 2023-01-29_04-01-19_random-path-overlap_1991f794-1e0c-4750-bf63-ad3fba4b8ac4
+  Shared Autonomy:
+    heatmap: True
+    old_min_obj: 0.0
+    min_obj: 0.0
+    max_obj: 10.0
+    archive_size: 2500
+    xlabel: "Distance Between Goals"
+    xbounds: [0.0, 0.32]
+    ylabel: "Human Variation"
+    ybounds: [0.0, 0.112]
+    Algorithms:
+      DSAS:
+        logdir: 2023-01-30_11-40-37_dqd-dsage-sa_058b8e38-862e-4739-9a37-a5a744c9bc3f
+      SAS:
+        logdir: 2023-01-30_11-36-11_dsage-sa_498f9051-4fdf-4e53-b68b-09912f8c5abe
+      CMA-MAE:
+        logdir: 2023-01-30_14-33-04_cma-mae-sa_7754e2d7-2f48-4c24-839c-f9c3292fb3be
+      MAP-Elites:
+        logdir: 2023-01-29_18-04-01_map-elites-sa_4dc8426a-422d-49da-b3ba-86243b10fd37
+      Random Search:
+        logdir: 2023-01-29_18-12-16_random-sa_da191a25-7d8b-4b33-84ae-18390d07f882

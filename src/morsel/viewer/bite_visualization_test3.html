@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>mesh test</title>
+		<meta charset="utf-8">
+		<style>
+			body {
+				margin: 0px;
+				background-color: #000000;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r70/three.min.js"></script>
+		<script src="lib/jquery.min.js"></script>
+		<script src="lib/stats.min.js"></script>
+
+		<script src="js/shaderlibrary.js"></script>>
+		<script type="text/javascript" src="js/orbitrotate.js"></script>
+		<script src="js/basegrid.js"></script>
+		<script src="js/slicevolume.js"></script>
+		<script src="js/orbitline.js"></script>
+		<script src="js/clickmanager.js"></script>
+
+		<script>
+
+			var camera, scene, renderer;
+			var mesh;
+			var stats;
+
+			var slicevolume = null;
+			var depthtex = null
+			var colortex = null;
+
+			var windowX, windowY;
+			var windowHalfX, windowHalfY;
+
+			var sliceroot;
+
+			var thegrid;
+
+			var shaderlib = null;
+			var linetex;
+
+			var srcWidth = 320;
+			var srcHeight = 240;
+			var srcAspect = srcWidth / srcHeight;
+			var objroot;
+
+			var circles = [];
+			var circleroot;
+
+			var bmanager;
+
+			$(function(){
+				init();
+			});
+
+			function getSize() {
+				windowX = window.innerWidth;
+				//windowY = window.innerHeight;
+				windowY = window.innerHeight;
+				windowHalfX = windowX / 2.0;
+				windowHalfY = windowY / 2.0;
+				console.log("WX: " + windowX + ", WY: " + windowY);
+			}
+
+			function shaders_loaded() {
+				console.log("Shaders loaded!");
+				final_init();
+			}
+
+			function final_init() {
+				var soptions = {
+					nearDepth: 0.3,
+					farDepth: 0.45,
+					// nearDepth: 0.1,
+					// farDepth: 1.0,
+					fov: (90 / 180.0) * Math.PI,
+					depthencoding: [0.33, 0.33, 0.33, 0.0],
+					//depthencoding: [3.33, 3.33, 3.33, 0.0],
+					aspectRatio: srcAspect, 
+					nslices: 256,
+					thickness: 0.01,
+					depthmap: depthtex,
+					colormap: colortex,
+					//combinedmap: depthtex,
+					root: sliceroot
+				};
+				slicevolume = new SliceVolume(soptions, shaderlib);
+
+				loadCircles("test.json");
+			}
+
+			function createLineCircle(rad, npts) {
+				console.log("Creating line circle...");
+				var opts = {parent: circleroot, radius: rad, npts: npts, linetex: linetex, debug: true};
+				return new RingButton(opts, shaderlib, bmanager);
+			}
+
+			function loadCircles(fn) {
+				createCircles(20);
+				$.getJSON(fn, function(res) {
+					updateCircles(res["pts3d"]);
+				});
+			}
+
+			function updateCircles(data) {
+				var rad = 0.03;
+
+				for(var i = 0; i < circles.length; ++i) {
+					if(i < data.length) {
+						var posx = data[i][0];
+						var posy = data[i][2];
+						var posz = data[i][1];
+						circles[i].getNode().position.set(posx, posy, posz);
+						circles[i].getNode().visible = true;
+					} else {
+						circles[i].getNode().visible = false;
+					}
+				}
+			}
+
+			function createCircles(maxcircles) {
+				var rad = 0.03;
+
+				for(var i = 0; i < maxcircles; ++i) {
+					var posx = 0.0;
+					var posy = i * rad;
+					var posz = 0.0;
+
+					var tempCircle = createLineCircle(rad, 30);
+					tempCircle.getNode().position.set(posx, posy, posz);
+					circles.push(tempCircle);
+				}
+			}
+
+			function init() {
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				document.body.appendChild( renderer.domElement );
+
+				stats = new Stats();
+				stats.domElement.style.position = 'absolute';
+				stats.domElement.style.top = '0px';
+				document.body.appendChild( stats.domElement );
+
+				getSize();
+
+				//
+
+				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.1, 100 );
+				scene = new THREE.Scene();
+
+				// add some lights so we can see stuff
+				scene.add( new THREE.AmbientLight( 0xcccccc ) );
+
+				objroot = new THREE.Object3D();
+				scene.add(objroot);
+
+				circleroot = new THREE.Object3D();
+				objroot.add(circleroot);
+
+				bmanager = new VirtualButtonManager();
+
+				userMouseClick = function(x,y) {
+					bmanager.updateClick(x, y);
+				}
+
+				var directionalLight = new THREE.DirectionalLight( 0xeeeeee );
+				directionalLight.position.x = Math.random() - 0.5;
+				directionalLight.position.y = Math.random() - 0.5;
+				directionalLight.position.z = Math.random() - 0.5;
+				directionalLight.position.normalize();
+				scene.add( directionalLight );
+
+				var pointLight = new THREE.PointLight( 0xffffff, 4 );
+				scene.add(pointLight);
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+				sliceroot = new THREE.Object3D();
+				objroot.add(sliceroot);
+				sliceroot.rotation.x = Math.PI / 2.0;
+				sliceroot.position.y = 0.4;
+
+				thegrid = new BaseGrid(2.0, 2.0, 0.1);
+				thegrid.addToScene(objroot);
+				//thegrid.node.rotation.x = Math.PI / 2.0;
+				// //thegrid.node.position.z = 1.5;
+
+				//initOrbitCamera(camera);
+				initOrbitRotator(objroot);
+
+				depthtex = THREE.ImageUtils.loadTexture( 'actual_depth.png' );
+				colortex = THREE.ImageUtils.loadTexture('actual_depth_s.png'); //( 'plane_residuals.png' );
+				//depthtex = THREE.ImageUtils.loadTexture( 'images/combined_test.png' );
+				depthtex.magFilter = THREE.NearestFilter;
+				depthtex.minFilter = THREE.NearestFilter;
+				colortex.magFilter = THREE.NearestFilter;
+				colortex.minFilter = THREE.NearestFilter;
+
+				linetex = THREE.ImageUtils.loadTexture( 'orange.png' );
+				linetex.wrapS = linetex.wrapT = THREE.RepeatWrapping;
+
+				shaderlib = new ShaderLibrary("shaders/");
+				shaderlib.setLoadCallback(shaders_loaded);
+				shaderlib.addShader("vs_depthslice_uni", "vs_depthslice_uni.txt");
+				shaderlib.addShader("fs_depthslice_uni", "fs_depthslice_uni.txt");
+				shaderlib.addShader("vs_depthslice", "vs_depthslice.txt");
+				shaderlib.addShader("fs_depthslice", "fs_depthslice.txt");
+				shaderlib.addShader("vs_line", "vs_screenline.txt");
+				shaderlib.addShader("fs_line", "fs_solid.txt");
+				shaderlib.addShader("fs_uvline", "fs_uvline.txt");
+				shaderlib.loadShaders();
+
+				animate();
+
+				//init_ws();
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function vfupdate(data) {
+				tangoforia.update(data);
+			}
+
+			function animate() {
+
+				bmanager.updateAll();
+				bmanager.updateView(camera);
+
+				requestAnimationFrame( animate );
+				updateCamera();
+				renderer.render(scene, camera);
+
+				stats.update();
+
+			}
+
+		</script>
+
+	</body>
+</html>

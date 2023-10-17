@@ -1,0 +1,17 @@
+# Configuration for CMA-MAE with two bottles in shared autonomy.
+include "config/shared_autonomy/map_elites.gin"
+
+experiment.name = "CMA-MAE SA"
+
+Manager.emitter_types = [(@EvolutionStrategyEmitter, 8)]
+
+EvolutionStrategyEmitter.x0 = [0.6, 0.05, 0.6, 0.05, 0, 0, 0, 0, 0] # Halfway between bounds.
+EvolutionStrategyEmitter.sigma0 = 0.01
+EvolutionStrategyEmitter.ranker = "imp"
+EvolutionStrategyEmitter.selection_rule = "mu"
+EvolutionStrategyEmitter.restart_rule = "basic"
+EvolutionStrategyEmitter.bounds = None
+EvolutionStrategyEmitter.batch_size = 37
+EvolutionStrategyEmitter.constraint_func = None
+
+ScenarioConfig.reg_obj_coeff = 1.0

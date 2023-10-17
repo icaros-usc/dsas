@@ -1,0 +1,6 @@
+
+initial_population=100
+mutation_power_pos_1 =0.01
+mutation_power_disturb_1 = 0.005
+mutation_power_pos_2 =0.1
+mutation_power_disturb_2 = 0.05

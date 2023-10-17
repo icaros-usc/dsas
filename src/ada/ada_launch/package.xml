@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package>
+  <name>ada_launch</name>
+  <version>0.2.0</version>
+  <description>The ada_launch package</description>
+  <maintainer email="snikolai@andrew.cmu.edu">Stefanos Nikolaidis</maintainer>
+  <license>None</license>
+ <buildtool_depend>catkin</buildtool_depend>
+</package>

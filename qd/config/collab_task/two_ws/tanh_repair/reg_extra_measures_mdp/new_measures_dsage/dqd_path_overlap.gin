@@ -1,0 +1,5 @@
+# Configuration for DQD-DSAGE with path-overlap measures.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/dsage_dqd.gin"
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/new_measures_dsage/path_overlap_base.gin"
+
+experiment.name = "DQD-DSAGE path-overlap"

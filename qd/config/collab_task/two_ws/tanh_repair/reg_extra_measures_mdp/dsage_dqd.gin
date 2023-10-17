@@ -1,0 +1,20 @@
+# Configuration for DSAGE with DQD.
+include "config/collab_task/two_ws/tanh_repair/reg_extra_measures_mdp/dsage.gin"
+
+experiment.name = "DSAGE-DQD Collab"
+
+Manager.is_dqd = True
+Manager.emitter_types = [(@GradientArborescenceEmitter, 8)]
+
+GradientArborescenceEmitter.x0 = "[0] * 9"
+GradientArborescenceEmitter.sigma0 = 1
+GradientArborescenceEmitter.lr = 1.0
+GradientArborescenceEmitter.ranker = "imp"
+GradientArborescenceEmitter.grad_opt = "gradient_ascent"
+GradientArborescenceEmitter.restart_rule = "basic"
+GradientArborescenceEmitter.batch_size = 37
+
+ScenarioManager.raw_em_input = True
+ScenarioManager.initial_sol_sigma = 0.5
+
+ScenarioConfig.sol_postprocessing_func = "mip_repair"

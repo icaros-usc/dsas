@@ -1,0 +1,29 @@
+# Configuration for MAP-Elites with two workspace collab task setting.
+include "config/collab_task/two_ws/tanh_repair/cma_mae_reg_extra_measures.gin"
+
+experiment.name = "CMA-MAE Collab (mdp)"
+
+Manager.sol_size = 9 # 3 points (Each with xy coordinates).
+Manager.emitter_types = [(@EvolutionStrategyEmitter, 8)]
+
+ScenarioConfig.sol_postprocessing_func = "mip_repair"
+ScenarioConfig.reg_obj_coeff = 1
+ScenarioConfig.measure_names = [
+  "calc_distance_between_objects",
+  "dist_std",
+]
+ServerScenarioConfig.human_mode = "mdp"
+
+EvolutionStrategyEmitter.x0 = "[0] * 9"
+EvolutionStrategyEmitter.sigma0 = 1
+
+GridArchive.dims = [9, 15]
+GridArchive.ranges = [[0.05, 0.32], [0, 0.45]]
+
+train/GridArchive.dims = [9, 15, 2, 2, 2]
+train/GridArchive.ranges = [[0.05, 0.32], [0, 0.45], [-0.16, 0.16], [-0.16, 0.16], [-0.16, 0.16]]
+train/GridArchive.learning_rate = 0.1
+train/GridArchive.threshold_min = 0
+
+downsample/GridArchive.dims = [9, 15, 1, 1, 1]
+downsample/GridArchive.ranges = [[0.05, 0.32], [0, 0.45], [-0.16, 0.16], [-0.16, 0.16], [-0.16, 0.16]]

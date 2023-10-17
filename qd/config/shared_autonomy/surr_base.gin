@@ -1,0 +1,20 @@
+# Base configuration for surrogate model experiments. Define %sol_size before including
+# this file.
+
+Manager.is_em = True
+Manager.inner_itrs = 10_000
+Manager.initial_em_sols = 100
+Manager.downsample_em = True
+Manager.downsample_archive_type = @downsample/GridArchive
+
+ScenarioManager.initial_sol_sigma = 1
+
+SurrogateModel.use_occ_net = True
+SurrogateModel.occ_train_epochs = 100
+SurrogateModel.occ_optim_lr = 0.0001
+SurrogateModel.pred_train_epochs = 100
+SurrogateModel.pred_optim_lr = 0.0001
+SurrogateModel.train_batch_size = 64
+
+SAOccupancyNet.num_inputs = %sol_size
+SAPredictNet.num_inputs = %sol_size
